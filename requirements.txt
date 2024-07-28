@@ -13,7 +13,6 @@ numpy==2.0.1
 pillow==10.4.0
 proglog==0.1.10
 pycryptodomex==3.20.0
-pytube==15.0.0
 requests==2.32.3
 setuptools==71.1.0
 tqdm==4.66.4

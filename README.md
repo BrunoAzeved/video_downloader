@@ -5,10 +5,8 @@ Este projeto é um script para baixar vídeos ou áudios do YouTube utilizando a
 
 ## Funcionalidades
 
-- Baixar vídeos do YouTube.
-- Baixar áudios do YouTube.
-- Adicionar link do YouTube nos metadados de comentários.
-- Configurar nome do arquivo para vídeos sem o nome do artista.
+- Baixar vídeos do YouTube (mp4).
+- Baixar áudios do YouTube (mp3/wav).
 
 ## Requisitos
 
@@ -48,4 +46,4 @@ Este projeto está licenciado sob a [MIT License](LICENSE).
 
 ## Contato
 
-Para mais informações, entre em contato com [Bruno Azevedo](mailto:bruno@example.com).
+Para mais informações, entre em contato com [Bruno Azevedo](mailto:bruno.azevedo94@gmail.com).
