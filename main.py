@@ -1,9 +1,14 @@
 import yt_dlp
+import os
 
-def download_video(url, download_type='video', audio_format=None):
-    # Define o template inicial para o nome do arquivo
+def download_video(url, download_type='video', audio_format=None, output_dir='.'):
+    # Verifica se o diretório de saída existe, caso contrário, cria-o
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+    
+    # Define o template para o nome do arquivo no diretório especificado
     ydl_opts = {
-        'outtmpl': '%(title)s.%(ext)s' if download_type == 'video' else '%(title)s - %(artist)s.%(ext)s',
+        'outtmpl': os.path.join(output_dir, '%(title)s.%(ext)s') if download_type == 'video' else os.path.join(output_dir, '%(title)s - %(artist)s.%(ext)s'),
         'restrictfilenames': False,  # Permite caracteres não-ASCII e espaços
     }
 
@@ -45,6 +50,10 @@ if __name__ == "__main__":
         # Solicita a URL do vídeo do YouTube
         url = input("Digite a URL do vídeo do YouTube: ").strip()
         
+        if not url:
+            print("Nenhuma URL fornecida. Encerrando o programa.")
+            break
+        
         # Solicita o tipo de download (vídeo ou áudio)
         while True:
             download_type = input("Você deseja baixar o vídeo ou apenas o áudio? (video/audio): ").strip().lower()
@@ -52,6 +61,9 @@ if __name__ == "__main__":
                 break
             print("Tipo de download inválido. Por favor, digite 'video' ou 'audio'.")
         
+        # Solicita o diretório de saída
+        output_dir = input("Digite o diretório de saída (padrão: output): ").strip() or 'output'
+
         if download_type == 'audio':
             # Solicita o formato de áudio desejado
             while True:
@@ -59,11 +71,12 @@ if __name__ == "__main__":
                 if audio_format in ['mp3', 'wav']:
                     break
                 print("Formato de áudio inválido. Por favor, digite 'mp3' ou 'wav'.")
-            download_video(url, download_type, audio_format)
+            download_video(url, download_type, audio_format, output_dir)
         else:
-            download_video(url, download_type)
+            download_video(url, download_type, output_dir=output_dir)
         
         # Pergunta ao usuário se deseja fazer outro download
         another_download = input("Deseja fazer outro download? (s/n): ").strip().lower()
         if another_download != 's':
+            print("Encerrando o programa.")
             break

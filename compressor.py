@@ -35,6 +35,7 @@ def main():
     input_path = input("Enter the path to the input video file: ")
     target_size_mb = float(input("Enter the desired output file size in MB: "))
     resolution = '1920:1080' #input("Enter the desired resolution (e.g., 1920:1080 for Full HD): ")
+    print(f"Compactando vídeo para resolução: {resolution}" )
 
     # Extract the extension from the input file
     input_extension = os.path.splitext(input_path)[1]
